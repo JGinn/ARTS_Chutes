@@ -9,9 +9,9 @@ with Bounded_Buffer;
 procedure main is
   B : Ball_Sensed;
   T : Time;
-  Hopper_Load_Time : Duration := 0.1;
+  Hopper_Load_Time : Duration := 0.2;
   Transfer_Time : Duration := 1.1;
-  Release_Frequency : Duration := 0.6;
+  Release_Time : Duration := 1.0;
 
   package Time_Buffer is new Bounded_Buffer(Element_T => Time);
 
@@ -58,7 +58,6 @@ procedure main is
 
   task body Watch_Dog_Controller is
     died : Boolean := False;
-    watch_dog_time_out : exception;
   begin
     loop
       select Watch_Dog.Check_Alive;
@@ -69,29 +68,21 @@ procedure main is
       end select;
       exit when died;
     end loop;
-    Put_Line("DU-DU ... DU ... DU-DU TERMINATE!!!!!!!!!!");
     Watch_Dog.Stop;
-    raise watch_dog_time_out;
   end Watch_Dog_Controller;
 
   Task body Releaser is
   begin
     New_Line;
-    Put_Line("Sorter Close.");
     Sorter_Close;
 
     select Watch_Dog.Going;
     then abort
       while true loop
-        Put_Line("Hopper_Load");
         Hopper_Load;
         delay Hopper_Load_Time;
-
-        New_Line (1);
-        Put ("Hopper_Unload");
         Hopper_Unload;
-
-        delay release_frequency;
+        delay Release_Time;
       end loop;
     end select;
   exception
@@ -119,9 +110,6 @@ procedure main is
             Sorter_Glass;
           end if;
         end if;
-
-        Put_Line("Ball Sensed: ");
-        Put_Line(Ball_Sensed'Image(B));
       end loop;
     end select;
   end Sorter;
