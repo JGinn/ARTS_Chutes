@@ -1,0 +1,39 @@
+V "GNAT Lib v2010"
+A --RTS=marteuc_x86
+A -gnatv
+A -gnatv
+P
+R vnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnvnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnv3nnnnnnnnnnnn
+
+U bounded_buffer%b	bounded_buffer.adb	a3f6b3e1 NE OO PK GE
+
+U bounded_buffer%s	bounded_buffer.ads	bd7bc183 BN EE NE OO PK GE
+
+D bounded_buffer.ads	20160304115151 bd7bc183
+D bounded_buffer.adb	20160304115202 1e8d7262
+D system.ads		20130926110542 0c0d0c97
+X 1 bounded_buffer.ads
+2+6 Element_T 6r33 13r20 20r25 21r28 2|3r25 10r28
+3k9*Bounded_Buffer 2z6 31l5 31e19 2|1b14 33l5 33t19
+4N3*Buffer_Size 5r21 7r33 2|3r47
+5M8*index 6r23 25r13 25r22 26r12 26r21
+6A8*Buff(2+6)<5M8> 28r11
+7I8*Buffer_Count<short_short_integer> 27r11
+9R8*Element_Valid 9d23 17e15 23r26 2|23r26
+9b23 Valid{boolean} 11r13 2|26m17 28m17
+13*13 Data{2+6} 2|29m16
+19W18*Buffer 29l7 29e13 2|2b18 32l7 32t13
+20Y11 Place 20>18 2|3b11 8l9 8t14
+20*18 Item{2+6} 2|6r20
+21Y11 Take 21<17 2|10b11 15l9 15t13
+21*17 Item{2+6} 2|12m7
+22Y11 Drop 2|17b11 21l9 21t13
+23V14 Peek{9R8} 2|23b14 31l9 31t13
+25m5 First{5M8} 2|12r19 13m7 13r16 19m7 19r16 29r28
+26m5 Last{5M8} 2|5m7 5r15 6r11
+27i5 Num{7I8} 2|3r41 7m7 7r14 10r44 14m7 14r14 17r21 20m7 20r14 25r10
+28a5 Buf{6A8} 2|6m7 12r15 29r24
+X 2 bounded_buffer.adb
+3*18 Item{1|2+6}
+10*17 Item{1|2+6}
+
